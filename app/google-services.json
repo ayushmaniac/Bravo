@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "503931767108",
+    "firebase_url": "https://bravo-16caf.firebaseio.com",
+    "project_id": "bravo-16caf",
+    "storage_bucket": "bravo-16caf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503931767108:android:b69b6403c1f10612512f11",
+        "android_client_info": {
+          "package_name": "com.realcrap.bravo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503931767108-67ilhqkukae6ol5e6gugbffr56ju8r8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.realcrap.bravo",
+            "certificate_hash": "4d345b52a6643dc263439718898404ba1f7ceb72"
+          }
+        },
+        {
+          "client_id": "503931767108-fic024drl7cvp33rp9las1ftef9m9mu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC11oq7SJmuU0Y7TRRzLuYqcgte6YqzFFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503931767108-fic024drl7cvp33rp9las1ftef9m9mu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
