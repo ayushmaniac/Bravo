@@ -3,122 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    style="@style/Theme.AppCompat.Light.NoActionBar"
     android:layout_height="match_parent"
-    android:background="#006cb5"
+    android:padding="30dp"
+    android:background="@drawable/bg_grad"
     tools:context=".ui.login.Login">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:text="Welcome to Bravo."
-        android:textColor="#D9DCE6"
-        android:textSize="30dp"
+        android:layout_marginTop="156dp"
+        android:fontFamily="@font/poppins"
+        android:text="Welcome To Bravo!"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logoText"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="@+id/logoText"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="325dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Login with Google"
-        android:textColor="#006cb5"
-        android:drawableLeft="@drawable/googlelogo"
-        android:padding="10dp"
-        android:background="@drawable/button_bg"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/button_bg"
-        android:drawableLeft="@drawable/fblogo"
-        android:paddingLeft="10dp"
-        android:text="Login with Facebook"
-        android:textColor="#006cb5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-
-    <!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Log in"-->
-<!--        android:textColor="#D9DCE6"-->
-<!--        android:textSize="20dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.912"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="More Options"
-
-        android:textColor="#D9DCE6"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.019"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/loginGoogleButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="By tapping continue, Create Account or More Options,"
-        android:textColor="#D9DCE6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:padding="10dp"
+        android:background="@color/colorAccent"
+        android:drawableLeft="@drawable/googlelogo"
+        android:text="Signup with Google"
+        app:layout_constraintEnd_toEndOf="@+id/welcomText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/welcomText"
+        app:layout_constraintTop_toBottomOf="@+id/welcomText" />
 
     <TextView
-        android:layout_width="343dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="16dp"
-        android:text="I agreee to Bravo's Terms of Service, Payments Terms of Service , Privacy Policy and Nondiscrimination Policy"
-        android:textColor="#D9DCE6"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
+        android:id="@+id/logoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pacifico"
-        android:text="Bravo!"
-        android:textColor="@android:color/white"
-        android:textSize="40dp"
+        android:text="@string/bravoLogo"
+        android:textColor="@color/colorAccent"
+        android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/welcomText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
+
+
+    <TextView
+        android:id="@+id/loginManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log In"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintBottom_toTopOf="@+id/logoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/by_tapping_to_login_or_creating_account_you_agree_to_our_terms_and_conditions"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signupButton"
+        app:layout_constraintStart_toStartOf="@+id/signupButton"
+        app:layout_constraintTop_toBottomOf="@+id/signupButton"
+        app:layout_constraintVertical_bias="0.948" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="Create an Account"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:background="@color/colorAccent"
+        android:drawableTint="@color/colorPrimary"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginGoogleButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginGoogleButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginGoogleButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

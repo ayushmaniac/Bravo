@@ -1,8 +1,13 @@
 package com.realcrap.bravo.di.component
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
+import com.realcrap.bravo.data.remote.NetworkService
+import com.realcrap.bravo.data.repository.UserRepository
 import com.realcrap.bravo.di.application.BravoApplication
 import com.realcrap.bravo.di.module.ApplicationModule
+import com.realcrap.bravo.util.network.NetworkHelper
+import com.realcrap.bravo.util.rx.SchedulerProvider
 import dagger.Component
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
@@ -16,6 +21,18 @@ interface ApplicationComponent {
     fun getContext() : Context
 
     fun getCompositeDisposable() : CompositeDisposable
+
+    fun getSchedulerProvider(): SchedulerProvider
+
+    fun getNetworkHelper(): NetworkHelper
+
+    fun getFirebaseAuth() : FirebaseAuth
+
+    fun getUserRepository() : UserRepository
+
+    fun getNetworkService() : NetworkService
+
+
 
 
 }
