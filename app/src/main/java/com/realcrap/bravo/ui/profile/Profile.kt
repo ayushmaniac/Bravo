@@ -30,7 +30,7 @@ class Profile : BaseFragment<ProfileViewModel>() {
 
     }
 
-    override fun provideLayoutId(): Int = R.layout.fragment_profile
+    override fun provideLayoutId(): Int = R.layout.fragment_userprofile
 
     override fun injectDependencies(fragmentComponent: FragmentComponent)  =
             fragmentComponent.inject(this)
