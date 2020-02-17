@@ -11,14 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.notification.Notifications"></activity>
+        <activity android:name=".ui.allsalons.AllSalons"></activity>
+        <activity android:name=".ui.contactus.ContactUs" />
+        <activity android:name=".ui.notification.Notifications" />
         <activity android:name=".ui.mybooking.MyBookings" />
         <activity android:name=".ui.setuppassword.CreatePassword" />
-        <activity android:name=".ui.main.MainActivity" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity android:name=".ui.forgotpassword.ForgotPassword" />
         <activity android:name=".ui.signup.Registration" />
         <activity android:name=".ui.loginemail.LoginEmail" />
-        <activity android:name=".ui.location.Location" />
+        <activity android:name=".ui.location.Location">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity android:name=".ui.splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +39,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.login.Login" />
+
+        <service android:name=".service.FirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -1,11 +1,17 @@
 package com.realcrap.bravo.di.module
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.realcrap.bravo.di.scope.ActivityContext
+import com.realcrap.bravo.di.scope.ActivityScope
 import com.realcrap.bravo.ui.base.BaseFragment
 import com.realcrap.bravo.ui.forgotpassword.ForgotPasswordViewModel
 import com.realcrap.bravo.ui.home.HomeViewModel
+import com.realcrap.bravo.ui.home.homeoffers.HomeOfferAdapter
+import com.realcrap.bravo.ui.home.homesalons.HomeSalonsAdapter
 import com.realcrap.bravo.ui.offers.OffersViewModel
+import com.realcrap.bravo.ui.offers.offersutil.OfferAdapter
 import com.realcrap.bravo.ui.profile.ProfileViewModel
 import com.realcrap.bravo.util.ViewModelProviderFactory
 import com.realcrap.bravo.util.network.NetworkHelper
@@ -18,8 +24,22 @@ import io.reactivex.disposables.CompositeDisposable
 @Module
 class FragmentModule(private val fragment: BaseFragment<*>) {
 
+    @ActivityContext
+    @Provides
+    fun provideContext() : Context = fragment.context!!
+
     @Provides
     fun provideLinearLayoutManager(): LinearLayoutManager = LinearLayoutManager(fragment.context)
+
+    @Provides
+    fun provideOffersAdapter()=OfferAdapter(fragment.lifecycle, ArrayList())
+
+    @Provides
+    fun provideHomeOffersAdapter()= HomeOfferAdapter(fragment.lifecycle, ArrayList())
+
+    @Provides
+    fun provideHomeSalonsAdapter()= HomeSalonsAdapter(fragment.lifecycle, ArrayList())
+
 
     @Provides
     fun provideHomeViewModel(

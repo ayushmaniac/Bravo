@@ -13,3 +13,7 @@ annotation class FragmentScope
 @Scope
 @Retention(AnnotationRetention.SOURCE)
 annotation class ViewHolderScope
+
+@Scope
+@Retention(AnnotationRetention.SOURCE)
+annotation class ActivityContext

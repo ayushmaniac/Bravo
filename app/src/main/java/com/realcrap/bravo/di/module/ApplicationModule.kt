@@ -19,10 +19,6 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule(private val application: BravoApplication) {
 
-    companion object
-    {
-        val baseUrl : String = "http://sansdigitals.com/phpdemos/bravo/api/"
-    }
 
     @Provides
     fun provideContext() : Context = application
