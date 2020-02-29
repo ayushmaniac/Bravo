@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.notification.Notifications">
 
+    <FrameLayout
+        android:id="@+id/layOutRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="#8BC34A"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/notificationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/backButton"
+                android:clickable="true"
+                android:fontFamily="@font/poppins"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Notifications"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layOutRel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

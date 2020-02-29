@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.allsalons.AllSalons">
+
+    <FrameLayout
+        android:id="@+id/layOutRel"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageButton
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/changeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="10dp"
+                android:text="Saturday, 22, Feb"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/layOutRel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.allsalons.AllSalons">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allSalonsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

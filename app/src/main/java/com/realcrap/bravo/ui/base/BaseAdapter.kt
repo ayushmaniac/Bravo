@@ -1,6 +1,5 @@
 package com.realcrap.bravo.ui.base
 
-import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -13,9 +12,10 @@ abstract class BaseAdapter<T: Any, VH : BaseItemViewHolder<T, out BaseItemViewMo
         parentLifeCycle : Lifecycle
 
 
-):RecyclerView.Adapter<VH>() {
+):RecyclerView.Adapter<VH>(), BaseItemClickListener {
 
     private var recyclerView: RecyclerView? = null
+
 
     init {
         parentLifeCycle.addObserver(object: LifecycleObserver{
@@ -119,4 +119,7 @@ abstract class BaseAdapter<T: Any, VH : BaseItemViewHolder<T, out BaseItemViewMo
         this.recyclerView = null
 
     }
+
+
+
 }

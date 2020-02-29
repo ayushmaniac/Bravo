@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/layOutRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="#8BC34A"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/notificationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/backButton"
+                android:clickable="true"
+                android:fontFamily="@font/poppins"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="ORDER #515151151"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_below="@+id/layOutRel"
+        android:id="@+id/bookMerchantName"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/colorAccent"
+        android:text="Meenakshi Salon and Spa"/>
+
+    <TextView
+        android:id="@+id/bookMerchandAddress"
+        android:layout_below="@id/bookMerchantName"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="12sp"
+        android:layout_height="wrap_content"
+        android:text="Samta Colony, Raipur"/>
+
+
+    <ImageView
+        android:id="@+id/bookingStatus"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/layOutRel"
+        android:padding="20dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/tick" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/bookMerchantDetailsText"
+        android:layout_below="@id/bookMerchandAddress"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins"
+        android:layout_height="wrap_content"
+        android:text="Details"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookServiceRecycler"
+        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
+        android:layout_below="@id/bookMerchantDetailsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/bookServiceTotal"
+        android:layout_below="@id/bookServiceRecycler"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="Service Total"/>
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/bookServiceTotalAmount"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/bookServiceRecycler"
+        android:layout_marginRight="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="800INR"/>
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/bookPayingMethod"
+        android:layout_below="@id/bookServiceTotal"
+        android:layout_width="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:text="Paid Online"/>
+
+
+
+
+</RelativeLayout>

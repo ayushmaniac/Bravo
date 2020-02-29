@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.FragmentComponent
+import com.realcrap.bravo.ui.allsalons.AllSalons
 import com.realcrap.bravo.ui.base.BaseFragment
 import com.realcrap.bravo.ui.home.homeoffers.HomeOfferAdapter
 import com.realcrap.bravo.ui.home.homesalons.HomeSalons
@@ -75,10 +76,14 @@ class Home : BaseFragment<HomeViewModel>(){
                 salonsLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
             }
         }
-
         locationChange.setOnClickListener{
 
         startActivity(Intent(context, Location::class.java))
+        }
+
+        cardAllSalon.setOnClickListener {
+            startActivity(Intent(context, AllSalons::class.java))
+
         }
     }
 
@@ -91,6 +96,11 @@ class Home : BaseFragment<HomeViewModel>(){
         viewModel.homeSalonsData.observe(this, Observer {
 
             homeSalonsAdapter.appendData(it)
+        })
+
+        viewModel.cityData.observe(this, Observer {
+
+            locationChange.text = it
         })
 
 

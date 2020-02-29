@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.allsalons.AllSalons"></activity>
+        <activity android:name=".ui.forgotpassword.changepassword.ChangePassword"></activity>
+        <activity android:name=".ui.editprofile.EditProfile" />
+        <activity android:name=".ui.checkout.Checkout" />
+        <activity android:name=".ui.buisnesspage.Buisness" />
+        <activity android:name=".ui.allsalons.AllSalons" />
+        <activity android:name=".ui.bookingdetails.BookingDetails" />
         <activity android:name=".ui.contactus.ContactUs" />
         <activity android:name=".ui.notification.Notifications" />
         <activity android:name=".ui.mybooking.MyBookings" />

@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ActivityComponent
 import com.realcrap.bravo.ui.base.BaseActivity
@@ -15,10 +16,11 @@ import com.realcrap.bravo.ui.loginemail.LoginEmail
 import com.realcrap.bravo.ui.signup.Registration
 import com.realcrap.bravo.util.display.Toaster
 import kotlinx.android.synthetic.main.activity_login.*
-import javax.inject.Inject
 
 class Login : BaseActivity<LoginViewModel>() {
 
+
+    private lateinit var auth: FirebaseAuth
 
 
     companion object {
@@ -35,6 +37,7 @@ class Login : BaseActivity<LoginViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
         initGoogleLogin()
         viewModel.loginResult.observe(this, Observer {
             if (it == true){
@@ -115,12 +118,37 @@ class Login : BaseActivity<LoginViewModel>() {
                 val account = task.getResult(ApiException::class.java)
                 if (account != null) {
                     viewModel.firebaseAuthWithGoogle(account)
+                    val currentUser = auth.currentUser
                 }
             } catch (e: ApiException) {
 
             }
 
         }
+
+    }
+
+    override fun setupObservers() {
+        super.setupObservers()
+
+        viewModel.loginResult.observe(this, Observer {
+
+            if(it == true){
+
+                viewModel.createNewUser(auth.currentUser)
+
+
+            }
+            else {
+
+
+            }
+        })
+
+        viewModel.statusData.observe(this, Observer {
+            Toaster.show(this, it)
+        })
+
 
     }
 }

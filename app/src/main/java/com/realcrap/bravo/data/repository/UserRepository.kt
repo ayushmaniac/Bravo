@@ -5,6 +5,10 @@ import com.realcrap.bravo.data.model.User
 import com.realcrap.bravo.data.remote.NetworkService
 import com.realcrap.bravo.data.remote.response.LoginResponse
 import com.realcrap.bravo.data.remote.response.RegistrationResponse
+import com.realcrap.bravo.data.remote.response.list.MerchantListResponse
+import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
+import com.realcrap.bravo.ui.allsalons.salon.Salon
+import com.realcrap.bravo.ui.buisnesspage.services.Services
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,6 +18,15 @@ class UserRepository @Inject constructor(
         private val networkService: NetworkService,
         private val userPreferences: UserPreferences
 ) {
+
+    fun saveNewUser(user: RegistrationResponse) {
+
+        userPreferences.setUserEmail(user.email)
+        userPreferences.setUserName(user.name)
+        userPreferences.saveNewUserMobile(user.mobile)
+        userPreferences.setAccessToken(user.usersid)
+
+    }
 
     fun saveCurrentUser(user: LoginResponse) {
         userPreferences.setUserStatus(user.status)
@@ -27,6 +40,16 @@ class UserRepository @Inject constructor(
         userPreferences.removeUserEmail()
         userPreferences.removeAccessToken()
     }
+
+
+    fun saveUserLoc(location : String){
+        userPreferences.setUserLoc(location)
+
+    }
+
+    fun getUserLoc() = userPreferences.getUserLoc()
+
+
 
     fun getCurrentUser(): User? {
 
@@ -58,11 +81,28 @@ class UserRepository @Inject constructor(
             RegistrationResponse(
                     it.status,
                     it.text,
-                    it.usersid
+                    it.usersid,
+                    it.name,
+                    it.email,
+                    it.mobile
 
             )
         }
 
+
+    fun getAllMerchantList(city : String) : Single<List<Salon>> =
+            networkService.getAllMerchants(userPreferences.getAccessToken().toString(), "merchantlist", city)
+                    .map {it.data}
+
+
+    fun getAllService(merchantId : String) : Single<ServiceResponse> =
+            networkService.getMerchantService(userPreferences.getAccessToken().toString(), "servicelist", merchantId)
+                    .map {ServiceResponse(
+                            it.status,
+                            it.merchants,
+                            it.servicesData
+
+                    )}
 
     }
 

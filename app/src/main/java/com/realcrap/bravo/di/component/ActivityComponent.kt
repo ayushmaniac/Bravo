@@ -3,7 +3,13 @@ package com.realcrap.bravo.di.component
 import com.realcrap.bravo.data.repository.UserRepository
 import com.realcrap.bravo.di.module.ActivityModule
 import com.realcrap.bravo.di.scope.ActivityScope
+import com.realcrap.bravo.ui.allsalons.AllSalons
+import com.realcrap.bravo.ui.bookingdetails.BookingDetails
+import com.realcrap.bravo.ui.buisnesspage.Buisness
+import com.realcrap.bravo.ui.checkout.Checkout
 import com.realcrap.bravo.ui.forgotpassword.ForgotPassword
+import com.realcrap.bravo.ui.forgotpassword.changepassword.ChangePassword
+import com.realcrap.bravo.ui.location.Location
 import com.realcrap.bravo.ui.login.Login
 import com.realcrap.bravo.ui.loginemail.LoginEmail
 import com.realcrap.bravo.ui.loginemail.LoginEmailViewModel
@@ -33,7 +39,23 @@ interface ActivityComponent {
 
     fun inject(activity : CreatePassword)
 
+
     fun inject(activity : MainActivity)
+
+    fun inject(activity: Buisness)
+
+    fun inject(activity: Checkout)
+
+    fun inject(activity: AllSalons)
+
+    fun inject(activity: BookingDetails)
+
+    fun inject(activity: Location)
+    fun inject(activity: ChangePassword)
+
+
+
+
 
 
 }

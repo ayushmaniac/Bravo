@@ -2,9 +2,21 @@ package com.realcrap.bravo.di.module
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.realcrap.bravo.data.repository.OtpRepository
 import com.realcrap.bravo.data.repository.UserRepository
+import com.realcrap.bravo.ui.allsalons.AllSalonsViewModel
+import com.realcrap.bravo.ui.allsalons.salon.SalonAdapter
 import com.realcrap.bravo.ui.base.BaseActivity
+import com.realcrap.bravo.ui.bookingdetails.BookingDetailsViewModel
+import com.realcrap.bravo.ui.buisnesspage.BuisnessViewModel
+import com.realcrap.bravo.ui.buisnesspage.services.ServicesAdapter
+import com.realcrap.bravo.ui.checkout.CheckOutViewModel
+import com.realcrap.bravo.ui.checkout.items.ItemsAdapter
 import com.realcrap.bravo.ui.forgotpassword.ForgotPasswordViewModel
+import com.realcrap.bravo.ui.forgotpassword.changepassword.ChangePasswordViewModel
+import com.realcrap.bravo.ui.location.LocationViewModel
 import com.realcrap.bravo.ui.login.LoginViewModel
 import com.realcrap.bravo.ui.loginemail.LoginEmailViewModel
 import com.realcrap.bravo.ui.main.MainViewModel
@@ -26,15 +38,36 @@ class ActivityModule (private val activity: BaseActivity<*>){
     fun provideContext(
     ) : Context = activity
 
+    @Provides
+    fun provideGridLayoutManager() = GridLayoutManager(activity, 2)
+
+    @Provides
+    fun provideServiceAdapter() = ServicesAdapter(activity.lifecycle, ArrayList())
+
+    @Provides
+    fun provideItemsAdapter() = ItemsAdapter(activity.lifecycle, ArrayList())
+
+    @Provides
+    fun provideLinearLayout() = LinearLayoutManager(activity)
+
+    @Provides
+    fun provideSalonAdapter() = SalonAdapter(activity.lifecycle, ArrayList())
+
+
+
+
+
+
 
     @Provides
     fun provideLoginViewModel(
             schedulerProvider: SchedulerProvider,
             compositeDisposable: CompositeDisposable,
-            networkHelper: NetworkHelper
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
     ): LoginViewModel = ViewModelProviders.of(
             activity, ViewModelProviderFactory(LoginViewModel::class) {
-        LoginViewModel(compositeDisposable, networkHelper, schedulerProvider)
+        LoginViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
     }).get(LoginViewModel::class.java)
 
     @Provides
@@ -79,11 +112,23 @@ class ActivityModule (private val activity: BaseActivity<*>){
     fun provideForgotPasswordViewModel(
             schedulerProvider: SchedulerProvider,
             compositeDisposable: CompositeDisposable,
-            networkHelper: NetworkHelper
+            networkHelper: NetworkHelper,
+            otpRepository: OtpRepository
     ): ForgotPasswordViewModel = ViewModelProviders.of(
             activity, ViewModelProviderFactory(ForgotPasswordViewModel::class) {
-        ForgotPasswordViewModel(compositeDisposable, schedulerProvider, networkHelper)
+        ForgotPasswordViewModel(compositeDisposable, schedulerProvider, networkHelper, otpRepository)
     }).get(ForgotPasswordViewModel::class.java)
+
+    @Provides
+    fun provideChangePasswordViewModelViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            otpRepository: OtpRepository
+    ): ChangePasswordViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(ChangePasswordViewModel::class) {
+        ChangePasswordViewModel(compositeDisposable, networkHelper, schedulerProvider, otpRepository)
+    }).get(ChangePasswordViewModel::class.java)
 
 
     @Provides
@@ -107,5 +152,62 @@ class ActivityModule (private val activity: BaseActivity<*>){
             activity, ViewModelProviderFactory(MainViewModel::class) {
         MainViewModel(compositeDisposable, networkHelper, schedulerProvider)
     }).get(MainViewModel::class.java)
-  
+
+
+    @Provides
+    fun provideBuisnessViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+    ): BuisnessViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(BuisnessViewModel::class) {
+        BuisnessViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository, ArrayList())
+    }).get(BuisnessViewModel::class.java)
+
+    @Provides
+    fun provideCheckouViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper
+    ): CheckOutViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(CheckOutViewModel::class) {
+        CheckOutViewModel(compositeDisposable, schedulerProvider, networkHelper)
+    }).get(CheckOutViewModel::class.java)
+
+
+    @Provides
+    fun provideAllSalonsViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+    ): AllSalonsViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(AllSalonsViewModel::class) {
+        AllSalonsViewModel(compositeDisposable, schedulerProvider, networkHelper, userRepository, ArrayList())
+    }).get(AllSalonsViewModel::class.java)
+
+
+    @Provides
+    fun provideBookingDetailsViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+    ): BookingDetailsViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(BookingDetailsViewModel::class) {
+        BookingDetailsViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
+    }).get(BookingDetailsViewModel::class.java)
+
+
+    @Provides
+    fun provideLocationViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+    ): LocationViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(LocationViewModel::class) {
+        LocationViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
+    }).get(LocationViewModel::class.java)
 }

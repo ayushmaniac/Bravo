@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/merchantCard"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="140dp">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/meenakshi"
+            android:id="@+id/salonImage"/>
+
+        <TextView
+            android:id="@+id/salonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/salonImage"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="7dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:text="Meenakshi Salon and Spa"/>
+
+        <TextView
+            android:id="@+id/salonDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/salonImage"
+            android:paddingLeft="10dp"
+            android:textSize="13sp"
+            android:layout_below="@id/salonName"
+            android:text="Meenakshi Salon and Spa"/>
+
+        <TextView
+            android:id="@+id/salonRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_star_black_24dp"
+            android:paddingLeft="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="15sp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="5"/>
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

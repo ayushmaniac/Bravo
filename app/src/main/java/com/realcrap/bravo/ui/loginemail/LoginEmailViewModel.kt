@@ -17,11 +17,12 @@ class LoginEmailViewModel(compositeDisposable: CompositeDisposable, networkHelpe
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper){
 
     private val validationList : MutableLiveData<List<Validation>> = MutableLiveData()
-
     val launchMain : MutableLiveData<Event<Map<String, String>>> = MutableLiveData()
     val emailField : MutableLiveData<String> = MutableLiveData()
     val passwordField : MutableLiveData<String> = MutableLiveData()
     val logginIn : MutableLiveData<Boolean> = MutableLiveData()
+    val statusData : MutableLiveData<String> = MutableLiveData()
+
 
     val emailValidation : LiveData<Resource<Int>> = filterValidation(Validation.Field.EMAIL);
 
@@ -63,9 +64,15 @@ class LoginEmailViewModel(compositeDisposable: CompositeDisposable, networkHelpe
                                 .subscribeOn(schedulerProvider.io())
                                 .subscribe(
                                         {
-                                            userRepository.saveCurrentUser(it)
-                                            logginIn.postValue(false)
-                                            launchMain.postValue(Event(emptyMap()))
+                                            if(it.status.equals("0")){
+
+                                            statusData.postValue(it.text)
+                                            }
+                                            else if(it.status.equals("1")){
+                                                userRepository.saveCurrentUser(it)
+                                                logginIn.postValue(false)
+                                                launchMain.postValue(Event(emptyMap()))
+                                            }
 
                                         },
                                         {

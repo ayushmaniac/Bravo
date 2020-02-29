@@ -31,6 +31,7 @@ class Splash : BaseActivity<SplashViewModel>(){
     }
 
     override fun setupView(savedInstanceState: Bundle?) {
+        lav_actionBar.playAnimation()
     }
 
     override fun setupObservers() {

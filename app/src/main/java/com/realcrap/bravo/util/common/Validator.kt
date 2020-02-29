@@ -45,7 +45,7 @@ object Validator {
                     email.isNullOrBlank()->
 
                         add(Validation(Validation.Field.EMAIL, Resource.error(R.string.email_field_empty)))
-                    !Validator.EMAIL_ADDRESS.matcher(email).matches() ->
+                    !EMAIL_ADDRESS.matcher(email).matches() ->
                         add(Validation(Validation.Field.EMAIL, Resource.error(R.string.email_field_invalid)))
                     else ->
                         add(Validation(Validation.Field.EMAIL, Resource.success()))

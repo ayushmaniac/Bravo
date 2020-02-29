@@ -1,6 +1,7 @@
 package com.realcrap.bravo.ui.home
 
 import androidx.lifecycle.MutableLiveData
+import com.realcrap.bravo.data.repository.UserRepository
 import com.realcrap.bravo.ui.base.BaseViewModel
 import com.realcrap.bravo.ui.home.homeoffers.HomeOffers
 import com.realcrap.bravo.ui.home.homesalons.HomeSalons
@@ -11,15 +12,27 @@ import io.reactivex.disposables.CompositeDisposable
 class HomeViewModel(
         schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
-        networkHelper: NetworkHelper
+        networkHelper: NetworkHelper,
+        val userRepository: UserRepository
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper){
 
     val homeOffersData = MutableLiveData<List<HomeOffers>>()
     val homeSalonsData = MutableLiveData<List<HomeSalons>>()
+    val cityData =  MutableLiveData<String>()
 
 
 
     override fun onCreate() {
+
+        if(userRepository.getUserLoc()!= null){
+
+            cityData.postValue(userRepository.getUserLoc())
+        }
+        else
+        {
+            cityData.postValue(null)
+        }
+
 
         homeOffersData.postValue(arrayListOf(
                 HomeOffers("PayTm", ""),
@@ -40,6 +53,7 @@ class HomeViewModel(
                 HomeSalons("New Mens", "")
 
                 ))
+
 
 
 

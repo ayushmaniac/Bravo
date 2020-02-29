@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorAccent"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.Home">
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="@color/colorAccent"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -53,8 +53,11 @@
 
 
         <RelativeLayout
+            android:id="@+id/cardAllSalon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:background="#0C4D97">
 
             <ImageView
@@ -73,8 +76,8 @@
                 android:layout_below="@id/allSaloonsText"
                 android:layout_marginLeft="30dp"
                 android:fontFamily="@font/poppins"
-                android:text="Open now"
-                android:textColor="@color/colorAccent" />
+                android:text="Check them out"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:id="@+id/allSaloonsText"
@@ -84,7 +87,7 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins"
                 android:text="All Salons"
-                android:textColor="@color/colorAccent"
+                android:textColor="@android:color/white"
                 android:textSize="30sp" />
 
 

@@ -11,6 +11,7 @@ import com.realcrap.bravo.ui.base.BaseActivity
 import com.realcrap.bravo.ui.home.Home
 import com.realcrap.bravo.ui.offers.Offers
 import com.realcrap.bravo.ui.profile.Profile
+import com.realcrap.bravo.ui.referandearn.Refer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainViewModel>() {
@@ -45,6 +46,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
                         viewModel.onOfferSelected()
                         true
                     }
+                    R.id.refer -> {
+                        viewModel.onReferSelected()
+                        true
+                    }
+
 
                     R.id.profile -> {
                         viewModel.onProfileSelected()
@@ -73,7 +79,31 @@ class MainActivity : BaseActivity<MainViewModel>() {
             it.getIfNotHandled()?.run { showOffers() }
         })
 
+        viewModel.referNavigation.observe(this, Observer {
+            it.getIfNotHandled()?.run { showRefer() }
+        })
+
     }
+
+    private fun showRefer() {
+        if (activeFragment is Refer) return
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        var fragment = supportFragmentManager.findFragmentByTag(Refer.TAG) as Refer?
+
+        if (fragment == null) {
+            fragment = Refer.newInstance()
+            fragmentTransaction.add(R.id.containerFragment, fragment, Refer.TAG)
+        } else {
+            fragmentTransaction.show(fragment)
+        }
+
+        if (activeFragment != null) fragmentTransaction.hide(activeFragment as Fragment)
+
+        fragmentTransaction.commit()
+
+        activeFragment = fragment    }
 
 
     private fun showHome() {

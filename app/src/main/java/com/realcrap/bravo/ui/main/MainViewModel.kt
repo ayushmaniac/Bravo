@@ -21,6 +21,7 @@ class MainViewModel(
     val profileNavigation = MutableLiveData<Event<Boolean>>()
     val homeNavigation = MutableLiveData<Event<Boolean>>()
     val offerNavigation = MutableLiveData<Event<Boolean>>()
+    val referNavigation = MutableLiveData<Event<Boolean>>()
 
     override fun onCreate() {
 
@@ -37,6 +38,10 @@ class MainViewModel(
 
     fun onOfferSelected() {
         offerNavigation.postValue(Event(true))
+    }
+
+    fun onReferSelected() {
+        referNavigation.postValue(Event(true))
     }
 
 }

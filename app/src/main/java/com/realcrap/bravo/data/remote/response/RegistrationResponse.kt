@@ -9,11 +9,27 @@ data class RegistrationResponse(
         @Expose
         var status : Int,
 
+        @SerializedName("text")
+        @Expose
+        var text : String,
+
         @SerializedName("usersid")
         @Expose
         var usersid : String,
 
-        @SerializedName("text")
+
+        @SerializedName("name")
         @Expose
-        var text : String
-)
+        var name : String,
+
+        @SerializedName("email")
+        @Expose
+        var email : String,
+
+
+        @SerializedName("mobile")
+        @Expose
+        var mobile : String
+
+
+        )

@@ -3,6 +3,7 @@ package com.realcrap.bravo.di.module
 import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.realcrap.bravo.data.repository.UserRepository
 import com.realcrap.bravo.di.scope.ActivityContext
 import com.realcrap.bravo.di.scope.ActivityScope
 import com.realcrap.bravo.ui.base.BaseFragment
@@ -13,6 +14,7 @@ import com.realcrap.bravo.ui.home.homesalons.HomeSalonsAdapter
 import com.realcrap.bravo.ui.offers.OffersViewModel
 import com.realcrap.bravo.ui.offers.offersutil.OfferAdapter
 import com.realcrap.bravo.ui.profile.ProfileViewModel
+import com.realcrap.bravo.ui.referandearn.ReferViewModel
 import com.realcrap.bravo.util.ViewModelProviderFactory
 import com.realcrap.bravo.util.network.NetworkHelper
 import com.realcrap.bravo.util.rx.SchedulerProvider
@@ -45,10 +47,11 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     fun provideHomeViewModel(
             schedulerProvider: SchedulerProvider,
             compositeDisposable: CompositeDisposable,
-            networkHelper: NetworkHelper
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
     ): HomeViewModel = ViewModelProviders.of(
             fragment, ViewModelProviderFactory(HomeViewModel::class) {
-        HomeViewModel(schedulerProvider, compositeDisposable, networkHelper)
+        HomeViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
     }).get(HomeViewModel::class.java)
 
 
@@ -66,11 +69,21 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     fun provideProfileViewModel(
             schedulerProvider: SchedulerProvider,
             compositeDisposable: CompositeDisposable,
-            networkHelper: NetworkHelper
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
     ): ProfileViewModel = ViewModelProviders.of(
             fragment, ViewModelProviderFactory(ProfileViewModel::class) {
-        ProfileViewModel(compositeDisposable, schedulerProvider, networkHelper)
+        ProfileViewModel(compositeDisposable, schedulerProvider, networkHelper, userRepository)
     }).get(ProfileViewModel::class.java)
 
+    @Provides
+    fun provideReferViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper
+    ): ReferViewModel = ViewModelProviders.of(
+            fragment, ViewModelProviderFactory(ReferViewModel::class) {
+        ReferViewModel(schedulerProvider, compositeDisposable, networkHelper)
+    }).get(ReferViewModel::class.java)
 
 }

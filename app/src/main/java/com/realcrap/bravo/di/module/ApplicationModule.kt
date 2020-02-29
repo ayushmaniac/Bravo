@@ -2,6 +2,7 @@ package com.realcrap.bravo.di.module
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.realcrap.bravo.BuildConfig
 import com.realcrap.bravo.data.remote.NetworkService
@@ -46,6 +47,7 @@ class ApplicationModule(private val application: BravoApplication) {
             10 * 1024 * 1024 // 10MB
 
     )
+
 
 
     @Provides

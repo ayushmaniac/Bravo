@@ -12,6 +12,9 @@ class UserPreferences @Inject constructor(private val prefs: SharedPreferences) 
         const val KEY_USER_NAME = "PREF_KEY_USER_NAME"
         const val KEY_USER_EMAIL = "PREF_KEY_USER_EMAIL"
         const val KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        const val KEY_STATUS= "PREF_STATUS"
+        const val GET_LOC = "PREF_GET_LOC"
+        const val KEY_USER_MOBILE = "PREF_MOB"
     }
 
     fun getToken(): String? =
@@ -62,6 +65,33 @@ class UserPreferences @Inject constructor(private val prefs: SharedPreferences) 
 
     fun setUserStatus(userStatus: String) =
             prefs.edit().putString(KEY_USER_NAME, userStatus).apply()
+
+    fun getUserLoc(): String? =
+            prefs.getString(GET_LOC, null)
+
+    fun setUserLoc(userStatus: String) =
+            prefs.edit().putString(GET_LOC, userStatus).apply()
+
+
+    fun saveNewUserStatus(userNewStatus: String) =
+            prefs.edit().putString(KEY_STATUS, userNewStatus).apply()
+
+    fun getNewUserStatus(): String? =
+            prefs.getString(KEY_STATUS, null)
+
+
+    fun saveNewUserMobile(userNewMobile: String) =
+            prefs.edit().putString(KEY_USER_MOBILE, userNewMobile).apply()
+
+    fun getNewUserMobile(): String? =
+            prefs.getString(KEY_USER_MOBILE, null)
+
+
+    fun saveForgotUserId(forgotUserId: String) =
+            prefs.edit().putString(KEY_USER_MOBILE, forgotUserId).apply()
+
+    fun getForgotUserId(): String? =
+            prefs.getString(KEY_USER_MOBILE, null)
 
 
 }

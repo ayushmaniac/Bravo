@@ -28,4 +28,7 @@
     <string name="my_bookings">My Bookings</string>
     <string name="share">Share</string>
     <string name="search_location">Search Location</string>
+    <string name="proceed">Proceed</string>
+    <string name="services">Services</string>
+    <string name="refer_amp_earn"><![CDATA[Refer & Earn]]></string>
 </resources>

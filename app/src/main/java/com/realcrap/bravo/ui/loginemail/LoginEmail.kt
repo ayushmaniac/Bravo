@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ActivityComponent
 import com.realcrap.bravo.ui.base.BaseActivity
+import com.realcrap.bravo.ui.forgotpassword.ForgotPassword
+import com.realcrap.bravo.ui.location.Location
 import com.realcrap.bravo.ui.main.MainActivity
 import com.realcrap.bravo.util.common.Event
 import com.realcrap.bravo.util.common.Status
@@ -51,6 +53,13 @@ class LoginEmail : BaseActivity<LoginEmailViewModel>() {
             viewModel.onLogin()
 
         }
+
+        forgotPasswordText.setOnClickListener {
+
+            startActivity(Intent(this, ForgotPassword::class.java))
+        }
+
+
     }
 
     override fun setupObservers() {
@@ -58,7 +67,7 @@ class LoginEmail : BaseActivity<LoginEmailViewModel>() {
 
         viewModel.launchMain.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
-                startActivity(Intent(applicationContext, MainActivity::class.java))
+                startActivity(Intent(applicationContext, Location::class.java))
                 finish()
             }
         })
