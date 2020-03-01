@@ -5,13 +5,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.realcrap.bravo.data.remote.NetworkService
 import com.realcrap.bravo.data.repository.OtpRepository
+import com.realcrap.bravo.data.repository.ProfilePictureRepository
 import com.realcrap.bravo.data.repository.UserRepository
 import com.realcrap.bravo.di.application.BravoApplication
 import com.realcrap.bravo.di.module.ApplicationModule
+import com.realcrap.bravo.di.scope.TempDirectory
 import com.realcrap.bravo.util.network.NetworkHelper
 import com.realcrap.bravo.util.rx.SchedulerProvider
 import dagger.Component
 import io.reactivex.disposables.CompositeDisposable
+import java.io.File
 import javax.inject.Singleton
 
 @Singleton
@@ -35,6 +38,11 @@ interface ApplicationComponent {
     fun getNetworkService() : NetworkService
 
     fun getOtpRepositopry() : OtpRepository
+
+    fun getProfPicRepositopry() : ProfilePictureRepository
+
+    @TempDirectory
+    fun getTempDirectory(): File
 
 
 

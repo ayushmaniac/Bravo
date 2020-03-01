@@ -1,94 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="5dp"
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <ImageView
         android:id="@+id/serviceImage"
         android:layout_width="80dp"
-        android:src="@drawable/monalisabg"
+        android:layout_height="80dp"
         android:scaleType="fitXY"
-        android:layout_height="80dp"/>
+        android:src="@drawable/monalisabg"
+        app:layout_constraintBottom_toTopOf="@+id/bookServiceButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/serviceImage"
-        android:fontFamily="@font/poppins"
         android:id="@+id/tvserviceName"
-        android:layout_marginLeft="10dp"
-        android:textSize="16sp"
-        android:layout_centerHorizontal="true"
-        android:text="Normal Hair Cut"/>
-
-    <TextView
-        android:layout_width="160dp"
-        android:layout_below="@id/tvserviceName"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/serviceImage"
-        android:fontFamily="@font/poppins"
-        android:id="@+id/tvserviceDesc"
-        android:layout_marginLeft="10dp"
-        android:textSize="10sp"
-        android:layout_centerHorizontal="true"
-        android:text="Normal Hair Cut"/>
-    <TextView
         android:layout_width="wrap_content"
-        android:layout_below="@id/tvserviceDesc"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="1dp"
         android:layout_toRightOf="@id/serviceImage"
         android:fontFamily="@font/poppins"
-        android:id="@+id/tvservicePrice"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:textSize="15sp"
+        android:text="Normal Hair Cut"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvserviceDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/serviceImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/tvserviceDesc"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvserviceName"
         android:layout_centerHorizontal="true"
-        android:text="Rs. 120"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="69dp"
+        android:layout_toRightOf="@id/serviceImage"
+        android:fontFamily="@font/poppins"
+        android:text="Normal Hair Cut"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/bookServiceButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/serviceImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvserviceName" />
 
-
-
-
+    <TextView
+        android:id="@+id/tvservicePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvserviceDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_toRightOf="@id/serviceImage"
+        android:fontFamily="@font/poppins"
+        android:text="Rs. 120"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bookServiceButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toEndOf="@+id/serviceImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvserviceDesc"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <Button
-        android:id="@+id/bookServiceButton"
-        android:layout_below="@id/tvserviceName"
+        android:id="@+id/bookButton"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:text="Book"
-        android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@android:color/white"
         android:background="#8BC34A"
-        android:textSize="10dp"
-        />
+        android:text="Book"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toEndOf="@+id/tvserviceDesc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238" />
 
+
+
+
+    <LinearLayout
+        android:id="@+id/editOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvservicePrice"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="#673AB7"
+            android:text="Edit"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="51dp"
+            android:background="#F44336"
+            android:text="Cancel"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/serviceTimeSelected"
+        android:id="@+id/timeSelectedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bookServiceButton"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="9dp"
-        android:fontFamily="@font/poppins"
-        android:text="3:00"
-        android:textSize="10sp" />
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/editOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toEndOf="@+id/tvserviceDesc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,4 +31,7 @@
     <string name="proceed">Proceed</string>
     <string name="services">Services</string>
     <string name="refer_amp_earn"><![CDATA[Refer & Earn]]></string>
+
+    <string name="try_again">Try again></string>
+
 </resources>

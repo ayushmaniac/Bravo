@@ -18,7 +18,7 @@ class ServicesViewModel@Inject constructor(
         compositeDisposable,
         networkHelper
 ) {
-
+    val wholeService: LiveData<Services> = data
     val serviceId: LiveData<String> = Transformations.map(data) { it.id }
     val serviceName: LiveData<String> = Transformations.map(data) { it.title }
     val serviceDesc: LiveData<String> = Transformations.map(data) { it.excerpt}

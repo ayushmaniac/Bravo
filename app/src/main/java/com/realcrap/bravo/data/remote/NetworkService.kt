@@ -1,14 +1,11 @@
 package com.realcrap.bravo.data.remote
 
-import com.realcrap.bravo.data.remote.response.GeneralResponse
-import com.realcrap.bravo.data.remote.response.LoginResponse
-import com.realcrap.bravo.data.remote.response.RegistrationResponse
-import com.realcrap.bravo.data.remote.response.UsersIdResponse
+import com.realcrap.bravo.data.remote.response.*
 import com.realcrap.bravo.data.remote.response.list.HomeMerchantListResponse
 import com.realcrap.bravo.data.remote.response.list.MerchantListResponse
 import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
-import com.realcrap.bravo.data.remote.response.UserDetailsResponse
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import retrofit2.http.*
 import javax.inject.Singleton
 
@@ -100,6 +97,14 @@ interface NetworkService {
             @Field("action") action : String
 
     ): Single<UserDetailsResponse>
+
+    @Multipart
+    @POST(Endpoints.USER_PROF)
+    fun uploadProfilePic(
+            @Part profilepic: MultipartBody.Part,
+            @Header("Authorization") auth : String
+
+    ): Single<ProfilePicResponse>
 
 
 

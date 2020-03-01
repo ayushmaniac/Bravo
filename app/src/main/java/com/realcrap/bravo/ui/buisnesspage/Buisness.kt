@@ -52,6 +52,8 @@ class Buisness : BaseActivity<BuisnessViewModel>() {
 
             startActivity(Intent(this, Checkout::class.java))
         }
+
+
     }
 
 
@@ -96,6 +98,7 @@ class Buisness : BaseActivity<BuisnessViewModel>() {
                 }
             })
         })
+
 
 
     }

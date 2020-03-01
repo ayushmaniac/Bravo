@@ -29,15 +29,6 @@ class BuisnessViewModel(
     val buisnessLongi : MutableLiveData<String> = MutableLiveData()
     val buisnessError : MutableLiveData<Boolean> = MutableLiveData()
 
-
-
-
-
-
-
-
-
-
     override fun onCreate() {
     }
 

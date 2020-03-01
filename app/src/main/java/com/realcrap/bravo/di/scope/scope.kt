@@ -1,5 +1,6 @@
 package com.realcrap.bravo.di.scope
 
+import javax.inject.Qualifier
 import javax.inject.Scope
 
 @Scope
@@ -17,3 +18,7 @@ annotation class ViewHolderScope
 @Scope
 @Retention(AnnotationRetention.SOURCE)
 annotation class ActivityContext
+
+@Qualifier
+@Retention(AnnotationRetention.SOURCE)
+annotation class TempDirectory

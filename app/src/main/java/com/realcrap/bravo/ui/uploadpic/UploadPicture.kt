@@ -3,6 +3,8 @@ package com.realcrap.bravo.ui.uploadpic
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.Observer
 import com.mindorks.paracamera.Camera
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ActivityComponent
@@ -57,7 +59,7 @@ class UploadPicture : BaseActivity<UploadPictureViewModel>() {
                     try {
                         intent?.data?.let {
                             applicationContext?.contentResolver?.openInputStream(it)?.run {
-//                                viewModel.onGalleryImageSelected(this)
+                                viewModel.onGalleryImageSelected(this)
                             }
                         } ?: showMessage("Please try again")
                     } catch (e: FileNotFoundException) {
@@ -66,10 +68,21 @@ class UploadPicture : BaseActivity<UploadPictureViewModel>() {
                     }
                 }
                 Camera.REQUEST_TAKE_PHOTO -> {
-//                    viewModel.onCameraImageTaken { camera.cameraBitmapPath }
+                    viewModel.onCameraImageTaken { camera.cameraBitmapPath }
                 }
             }
         }
+    }
+
+    override fun setupObservers() {
+        super.setupObservers()
+
+        viewModel.loading.observe(this, Observer {
+
+            uploadProgressBar.visibility = if(it) View.VISIBLE else View.GONE
+            finish()
+
+        })
     }
 
 

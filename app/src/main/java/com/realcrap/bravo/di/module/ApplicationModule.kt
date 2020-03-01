@@ -8,6 +8,8 @@ import com.realcrap.bravo.BuildConfig
 import com.realcrap.bravo.data.remote.NetworkService
 import com.realcrap.bravo.data.remote.Networking
 import com.realcrap.bravo.di.application.BravoApplication
+import com.realcrap.bravo.di.scope.TempDirectory
+import com.realcrap.bravo.util.common.FileUtils
 import com.realcrap.bravo.util.network.NetworkError
 import com.realcrap.bravo.util.network.NetworkHelper
 import com.realcrap.bravo.util.rx.RxSchedulerProvider
@@ -55,7 +57,10 @@ class ApplicationModule(private val application: BravoApplication) {
     fun provideSharedPreferences(): SharedPreferences = application.getSharedPreferences("bootcamp-instagram-project-prefs", Context.MODE_PRIVATE)
 
 
-
+    @Provides
+    @Singleton
+    @TempDirectory
+    fun provideTempDirectory() = FileUtils.getDirectory(application, "temp")
 
 
 }
