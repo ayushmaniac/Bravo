@@ -5,10 +5,10 @@ import com.realcrap.bravo.data.model.User
 import com.realcrap.bravo.data.remote.NetworkService
 import com.realcrap.bravo.data.remote.response.LoginResponse
 import com.realcrap.bravo.data.remote.response.RegistrationResponse
-import com.realcrap.bravo.data.remote.response.list.MerchantListResponse
 import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
+import com.realcrap.bravo.data.remote.response.UserDetailsResponse
 import com.realcrap.bravo.ui.allsalons.salon.Salon
-import com.realcrap.bravo.ui.buisnesspage.services.Services
+import com.realcrap.bravo.ui.home.homesalons.HomeSalons
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -94,6 +94,11 @@ class UserRepository @Inject constructor(
             networkService.getAllMerchants(userPreferences.getAccessToken().toString(), "merchantlist", city)
                     .map {it.data}
 
+    fun getAllHomeMerchantList(city : String) : Single<List<HomeSalons>> =
+            networkService.getAllHomeMerchants(userPreferences.getAccessToken().toString(), "merchantlist", city)
+                    .map { it.data}
+
+
 
     fun getAllService(merchantId : String) : Single<ServiceResponse> =
             networkService.getMerchantService(userPreferences.getAccessToken().toString(), "servicelist", merchantId)
@@ -103,6 +108,13 @@ class UserRepository @Inject constructor(
                             it.servicesData
 
                     )}
+
+
+    fun getUserDetails():Single<UserDetailsResponse.Users> =
+            networkService.getUserDetails(userPreferences.getAccessToken().toString(), "users")
+                    .map  {
+                        it.users
+                    }
 
     }
 

@@ -19,6 +19,7 @@ class ServicesViewModel@Inject constructor(
         networkHelper
 ) {
 
+    val serviceId: LiveData<String> = Transformations.map(data) { it.id }
     val serviceName: LiveData<String> = Transformations.map(data) { it.title }
     val serviceDesc: LiveData<String> = Transformations.map(data) { it.excerpt}
     val servicePrice : LiveData<String> = Transformations.map(data){it.price}

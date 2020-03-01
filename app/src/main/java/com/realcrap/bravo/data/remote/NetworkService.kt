@@ -4,8 +4,10 @@ import com.realcrap.bravo.data.remote.response.GeneralResponse
 import com.realcrap.bravo.data.remote.response.LoginResponse
 import com.realcrap.bravo.data.remote.response.RegistrationResponse
 import com.realcrap.bravo.data.remote.response.UsersIdResponse
+import com.realcrap.bravo.data.remote.response.list.HomeMerchantListResponse
 import com.realcrap.bravo.data.remote.response.list.MerchantListResponse
 import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
+import com.realcrap.bravo.data.remote.response.UserDetailsResponse
 import io.reactivex.Single
 import retrofit2.http.*
 import javax.inject.Singleton
@@ -79,6 +81,25 @@ interface NetworkService {
 
     ): Single<ServiceResponse>
 
+
+
+    @FormUrlEncoded
+    @POST(Endpoints.LOC)
+    fun getAllHomeMerchants(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String,
+            @Field("city") city : String
+
+    ): Single<HomeMerchantListResponse>
+
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER)
+    fun getUserDetails(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String
+
+    ): Single<UserDetailsResponse>
 
 
 

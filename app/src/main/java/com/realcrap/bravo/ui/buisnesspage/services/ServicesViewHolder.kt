@@ -3,6 +3,7 @@ package com.realcrap.bravo.ui.buisnesspage.services
 import android.app.TimePickerDialog
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ViewHolderComponent
@@ -13,22 +14,26 @@ import kotlinx.android.synthetic.main.service_row_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ServicesViewHolder(parent : ViewGroup) : BaseItemViewHolder<Services,ServicesViewModel>(
+class ServicesViewHolder(parent : ViewGroup
+,    private var itemSelectionListener: ItemSelectionListener<Services>
+) : BaseItemViewHolder<Services,ServicesViewModel>(
         R.layout.service_row_item, parent
 ) {
+
     override fun injectDependencies(viewHolderComponent: ViewHolderComponent) = viewHolderComponent.inject(this)
 
     override fun setupView(view: View) {
 
-        itemView.bookServiceButton.setOnClickListener {
 
+        itemView.bookServiceButton.setOnClickListener {
+            itemSelectionListener(adapterPosition, "nowwhat")
             val cal = Calendar.getInstance()
             val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
                 itemView.bookServiceButton.setText(SimpleDateFormat("HH:mm").format(cal.time)+" "+"Change Time")
                 itemView.cancelService.visibility = View.VISIBLE
-
+                addService(viewModel.serviceId)
             }
 
             TimePickerDialog(itemView.context, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), false).show()
@@ -43,6 +48,13 @@ class ServicesViewHolder(parent : ViewGroup) : BaseItemViewHolder<Services,Servi
             itemView.cancelService.visibility = View.GONE
 
         }
+
+
+    }
+
+    private fun addService(serviceId: LiveData<String>) {
+
+
 
 
     }
@@ -67,5 +79,8 @@ class ServicesViewHolder(parent : ViewGroup) : BaseItemViewHolder<Services,Servi
 
         })
     }
+
+
+
 
 }

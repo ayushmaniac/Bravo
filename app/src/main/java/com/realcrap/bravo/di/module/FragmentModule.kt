@@ -51,7 +51,7 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
             userRepository: UserRepository
     ): HomeViewModel = ViewModelProviders.of(
             fragment, ViewModelProviderFactory(HomeViewModel::class) {
-        HomeViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
+        HomeViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository, ArrayList())
     }).get(HomeViewModel::class.java)
 
 

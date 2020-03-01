@@ -18,18 +18,16 @@ class SalonViewHolder (parent: ViewGroup) : BaseItemViewHolder<Salon, SalonViewM
         R.layout.allsalons_item, parent
 ), SalonAdapter.OnItemClickListener
 {
-
-     var merchantIdR : String? = null
+    var merchantIDString : String? = null
 
     override fun injectDependencies(viewHolderComponent: ViewHolderComponent) = viewHolderComponent.inject(this)
 
     override fun setupView(view: View) {
 
         itemView.merchantCard.setOnClickListener {
-            viewModel.onMerchantClicked(adapterPosition)
-            Toaster.show(itemView.context, viewModel.merchantId.value.toString())
+            Toaster.show(itemView.context, merchantIDString.toString())
             val intent = Intent(itemView.context ,Buisness::class.java)
-            intent.putExtra("unique_id","1")
+            intent.putExtra("unique_id",merchantIDString)
             startActivity(itemView.context, intent, null)  //todo
 
 
@@ -57,6 +55,11 @@ class SalonViewHolder (parent: ViewGroup) : BaseItemViewHolder<Salon, SalonViewM
         })
 
 
+        viewModel.merchantId.observe(this, Observer {
+
+            merchantIDString = it
+
+        })
 
     }
 

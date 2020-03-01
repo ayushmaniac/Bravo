@@ -122,6 +122,9 @@ dependencies {
     //customdialog
     implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
 
+    //paracamera
+    implementation 'com.mindorks:paracamera:0.2.2'
+
 
 
 }

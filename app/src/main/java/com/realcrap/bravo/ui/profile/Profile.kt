@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.FragmentComponent
 import com.realcrap.bravo.ui.base.BaseFragment
+import com.realcrap.bravo.ui.editprofile.EditProfile
 import com.realcrap.bravo.ui.location.Location
 import com.realcrap.bravo.ui.login.Login
 import kotlinx.android.synthetic.main.fragment_userprofile.*
@@ -52,6 +53,10 @@ class Profile : BaseFragment<ProfileViewModel>() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
+
+        editProfileButton.setOnClickListener {
+            startActivity(Intent(context, EditProfile::class.java))
+        }
 
     }
 

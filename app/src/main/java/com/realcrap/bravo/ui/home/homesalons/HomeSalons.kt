@@ -1,7 +1,22 @@
 package com.realcrap.bravo.ui.home.homesalons
 
+import com.google.gson.annotations.SerializedName
+
 data class HomeSalons(
 
-        val homeSalonName : String,
-        val homeSalonImage : String
+        @SerializedName("id") val id : String,
+        @SerializedName("unique_id") val unique_id : String,
+        @SerializedName("name") val name : String,
+        @SerializedName("email") val email : String,
+        @SerializedName("storename") val storename : String,
+        @SerializedName("storetype") val storetype : String,
+        @SerializedName("address") val address : String,
+        @SerializedName("state") val state : String,
+        @SerializedName("city") val city : String,
+        @SerializedName("location") val location : String,
+        @SerializedName("latitude") val latitude : String,
+        @SerializedName("longitude") val longitude : String,
+        @SerializedName("rating") val rating : Int,
+        @SerializedName("logo") val logo : String,
+        @SerializedName("coverpic") val coverpic : String
 )

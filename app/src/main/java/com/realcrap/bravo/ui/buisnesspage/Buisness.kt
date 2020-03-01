@@ -24,7 +24,7 @@ class Buisness : BaseActivity<BuisnessViewModel>() {
         super.onCreate(savedInstanceState)
         val uniqueId=intent.getStringExtra("unique_id")
         buisnessProgress.visibility = View.VISIBLE
-        viewModel.loadServices("2")
+        viewModel.loadServices(uniqueId)
 
     }
 

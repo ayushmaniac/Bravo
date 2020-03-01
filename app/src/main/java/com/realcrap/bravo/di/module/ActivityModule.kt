@@ -14,6 +14,7 @@ import com.realcrap.bravo.ui.buisnesspage.BuisnessViewModel
 import com.realcrap.bravo.ui.buisnesspage.services.ServicesAdapter
 import com.realcrap.bravo.ui.checkout.CheckOutViewModel
 import com.realcrap.bravo.ui.checkout.items.ItemsAdapter
+import com.realcrap.bravo.ui.editprofile.EditProfileViewModel
 import com.realcrap.bravo.ui.forgotpassword.ForgotPasswordViewModel
 import com.realcrap.bravo.ui.forgotpassword.changepassword.ChangePasswordViewModel
 import com.realcrap.bravo.ui.location.LocationViewModel
@@ -23,6 +24,7 @@ import com.realcrap.bravo.ui.main.MainViewModel
 import com.realcrap.bravo.ui.setuppassword.CreatePasswordViewModel
 import com.realcrap.bravo.ui.signup.RegistrationViewModel
 import com.realcrap.bravo.ui.splash.SplashViewModel
+import com.realcrap.bravo.ui.uploadpic.UploadPictureViewModel
 import com.realcrap.bravo.util.ViewModelProviderFactory
 import com.realcrap.bravo.util.network.NetworkHelper
 import com.realcrap.bravo.util.rx.SchedulerProvider
@@ -210,4 +212,32 @@ class ActivityModule (private val activity: BaseActivity<*>){
             activity, ViewModelProviderFactory(LocationViewModel::class) {
         LocationViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
     }).get(LocationViewModel::class.java)
+
+    @Provides
+    fun provideEditProfileViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+
+    ): EditProfileViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(EditProfileViewModel::class) {
+        EditProfileViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
+    }).get(EditProfileViewModel::class.java)
+
+
+    @Provides
+    fun provideUploadProfileViewModelViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+
+    ): UploadPictureViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(UploadPictureViewModel::class) {
+        UploadPictureViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
+    }).get(UploadPictureViewModel::class.java)
+
+
+
 }

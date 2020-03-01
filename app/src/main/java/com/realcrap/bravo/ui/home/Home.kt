@@ -94,15 +94,24 @@ class Home : BaseFragment<HomeViewModel>(){
         })
 
         viewModel.homeSalonsData.observe(this, Observer {
+            it.data?.run { homeSalonsAdapter.appendData(this) }
 
-            homeSalonsAdapter.appendData(it)
         })
 
         viewModel.cityData.observe(this, Observer {
+           if(it.equals("1")){
+               locationChange.text = "Raipur"
+           }
+            else if (it.equals("2")){
 
-            locationChange.text = it
+               locationChange.text = "Bhilai"
+           }
         })
 
+        viewModel.homeSalonProgress.observe(this, Observer {
+            homeSalonprogressBar.visibility = if (it) View.VISIBLE else View.GONE
+
+        })
 
     }
 

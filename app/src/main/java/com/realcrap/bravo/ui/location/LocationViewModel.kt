@@ -24,12 +24,13 @@ class LocationViewModel (
     fun onCityOneSelected() {
 
         if(userRepository.getUserLoc()!=null){
-            userRepository.saveUserLoc("Raipur")
+            userRepository.saveUserLoc("1")
+
             cityOneData.postValue(true)
 
         }
         else {
-            userRepository.saveUserLoc("Raipur")
+            userRepository.saveUserLoc("1")
             cityOneData.postValue(true)
 
         }
@@ -39,13 +40,13 @@ class LocationViewModel (
     fun onCityTwoSelected(){
 
         if(userRepository.getUserLoc()!=null){
-            userRepository.saveUserLoc("Bhilai")
+            userRepository.saveUserLoc("2")
             cityTwoData.postValue(true)
 
 
         }
         else {
-            userRepository.saveUserLoc("Bhilai")
+            userRepository.saveUserLoc("2")
             cityTwoData.postValue(true)
 
 

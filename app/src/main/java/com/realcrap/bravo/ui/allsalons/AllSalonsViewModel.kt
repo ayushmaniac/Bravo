@@ -29,7 +29,7 @@ schedulerProvider,compositeDisposable,networkHelper
 
 
     override fun onCreate() {
-        getAllMerchants("1")
+        getAllMerchants(userRepository.getUserLoc().toString())
 
         getTodaysDate.postValue(
                 currentDate

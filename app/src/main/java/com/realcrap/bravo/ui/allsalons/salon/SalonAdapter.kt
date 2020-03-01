@@ -6,6 +6,7 @@ import com.realcrap.bravo.ui.base.BaseAdapter
 
 class SalonAdapter (parentLifecycle: Lifecycle,
                     salonsArrayList : ArrayList<Salon>
+
 ): BaseAdapter<Salon, SalonViewHolder>(
 
         salonsArrayList,
@@ -22,4 +23,7 @@ class SalonAdapter (parentLifecycle: Lifecycle,
 
         }
     }
+
+
 }
+

@@ -20,17 +20,16 @@ class SalonViewModel @Inject constructor(
 
     val name: LiveData<String> = Transformations.map(data) { it.storename }
     val rating: LiveData<Int> = Transformations.map(data) { it.rating }
-    val desc : LiveData<String> = Transformations.map(data){it.address}
-    val merchantId : MutableLiveData<String> = MutableLiveData()
-
+    val desc: LiveData<String> = Transformations.map(data) { it.address }
+    val merchantId: LiveData<String> = Transformations.map(data) { it.id }
 
 
     override fun onCreate() {
     }
 
-
-
-    fun onMerchantClicked(adapterPosition: Int) {
-        merchantId.postValue(adapterPosition.toString())
-    }
 }
+
+//    fun onMerchantClicked(adapterPosition: Int) {
+//        merchantId.postValue(data.value!!.id)
+//    }
+//}
