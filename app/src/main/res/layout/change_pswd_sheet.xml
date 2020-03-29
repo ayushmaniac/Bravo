@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_verify"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="30dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp">
+
+   <TextView
+       android:id="@+id/sheetTextOne"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Change Password"
+       android:fontFamily="@font/poppins"
+       android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/sheetTextTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sheetTextOne"
+        android:text="Don't put your lover's name as password"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/changePassword"
+        android:layout_below="@id/sheetTextTwo"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:hint="New Password"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/changePasswordEd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordLay"
+        android:layout_below="@id/changePassword"
+        android:layout_width="match_parent"
+        android:hint="Confirm Password"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPasswordEd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_below="@id/confirmPasswordLay"
+        android:id="@+id/changePasswordButton"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:text="Change Password"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:layout_height="44dp"/>
+
+</RelativeLayout>
