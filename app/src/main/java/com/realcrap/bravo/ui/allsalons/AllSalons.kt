@@ -93,7 +93,5 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
     }
 
 
-   fun newMethod{
-       
-   }
+
 }
