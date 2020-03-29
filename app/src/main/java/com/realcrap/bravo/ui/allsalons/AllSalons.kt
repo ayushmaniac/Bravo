@@ -93,5 +93,8 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
     }
 
 
+    fun newMethoodForTest(){
+
+    }
 
 }
