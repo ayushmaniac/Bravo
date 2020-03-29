@@ -47,6 +47,7 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
 
         }
 
+        //just for branch check
 
 
     }
@@ -91,4 +92,8 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
         })
     }
 
+
+   fun newMethod{
+       
+   }
 }
