@@ -3,6 +3,7 @@ package com.realcrap.bravo.data.remote
 import com.realcrap.bravo.data.remote.response.*
 import com.realcrap.bravo.data.remote.response.list.HomeMerchantListResponse
 import com.realcrap.bravo.data.remote.response.list.MerchantListResponse
+import com.realcrap.bravo.data.remote.response.list.OrderListResponse
 import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
 import io.reactivex.Single
 import okhttp3.MultipartBody
@@ -90,6 +91,7 @@ interface NetworkService {
     ): Single<HomeMerchantListResponse>
 
 
+
     @FormUrlEncoded
     @POST(Endpoints.USER)
     fun getUserDetails(
@@ -106,6 +108,57 @@ interface NetworkService {
 
     ): Single<ProfilePicResponse>
 
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER_ORDER)
+    fun doCashPayment(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String,
+            @Field("merchantid") merchantid : String,
+            @Field("serviceid") serviceid : String,
+            @Field("orderdate") orderdate : String,
+            @Field("ordertime") ordertime : String
+    ): Single<GeneralResponse>
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER_COUPON)
+    fun applyCoupon(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String,
+            @Field("merchantid") merchantid : String,
+            @Field("coupon") serviceid : String,
+            @Field("amount") amount : String
+    ): Single<CouponResponse>
+
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER_ORDER)
+    fun getOrderList(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String
+
+    ): Single<OrderListResponse>
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER_COUPON)
+    fun removeCoupon(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String,
+            @Field("totalamount") amount : String
+
+
+    ): Single<CouponResponse>
+
+
+    @FormUrlEncoded
+    @POST(Endpoints.USER_UPDATE)
+    fun updateProfile(
+            @Header("Authorization") auth : String,
+            @Field("action") action : String,
+            @Field("name") name : String,
+            @Field("email") email : String,
+            @Field("mobile") mobile : String
+    ): Single<GeneralResponse>
 
 
 }

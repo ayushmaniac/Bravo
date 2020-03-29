@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.contactus.ContactUs">
 
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/rounded_bg"
         android:fontFamily="@font/poppins"
         android:paddingLeft="20dp"
@@ -18,16 +20,19 @@
         android:text="Contact us"
         android:textColor="@android:color/white"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
 
     <TextView
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="164dp"
         android:fontFamily="@font/pacifico"
         android:text="Bravo!"
         android:textSize="40sp"
@@ -36,14 +41,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="356dp"
         android:text="Bravo Technologies Pvt. Ltd. "
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="244dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

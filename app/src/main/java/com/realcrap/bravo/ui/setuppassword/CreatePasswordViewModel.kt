@@ -47,8 +47,8 @@ class CreatePasswordViewModel(
     fun createAccount(){
 
         val name = nameField.value
-        val mobile = mobileField.value
         val email = emailField.value
+        val mobile = mobileField.value
         val password = passwordField.value
 
 

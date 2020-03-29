@@ -1,8 +1,9 @@
 package com.realcrap.bravo.ui.checkout.items
 
+import com.realcrap.bravo.ui.offers.Transfer
+
 data class Items(
 
-         val serviceId : String,
-         val serviceName : String,
-         val serviceTime : String
+        val transferList : List<Transfer>
+
 )

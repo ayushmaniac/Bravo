@@ -17,6 +17,7 @@ import com.realcrap.bravo.ui.buisnesspage.BuisnessViewModel
 import com.realcrap.bravo.ui.buisnesspage.services.ServicesAdapter
 import com.realcrap.bravo.ui.checkout.CheckOutViewModel
 import com.realcrap.bravo.ui.checkout.items.ItemsAdapter
+import com.realcrap.bravo.ui.checkout.paymentstatus.PaymenStausViewModel
 import com.realcrap.bravo.ui.editprofile.EditProfileViewModel
 import com.realcrap.bravo.ui.forgotpassword.ForgotPasswordViewModel
 import com.realcrap.bravo.ui.forgotpassword.changepassword.ChangePasswordViewModel
@@ -24,6 +25,7 @@ import com.realcrap.bravo.ui.location.LocationViewModel
 import com.realcrap.bravo.ui.login.LoginViewModel
 import com.realcrap.bravo.ui.loginemail.LoginEmailViewModel
 import com.realcrap.bravo.ui.main.MainViewModel
+import com.realcrap.bravo.ui.mybooking.MyBookingViewModel
 import com.realcrap.bravo.ui.setuppassword.CreatePasswordViewModel
 import com.realcrap.bravo.ui.signup.RegistrationViewModel
 import com.realcrap.bravo.ui.splash.SplashViewModel
@@ -47,11 +49,6 @@ class ActivityModule (private val activity: BaseActivity<*>){
     @Provides
     fun provideGridLayoutManager() = GridLayoutManager(activity, 2)
 
-    @Provides
-    fun provideServiceAdapter() = ServicesAdapter(activity.lifecycle, ArrayList())
-
-    @Provides
-    fun provideItemsAdapter() = ItemsAdapter(activity.lifecycle, ArrayList())
 
     @Provides
     fun provideLinearLayout() = LinearLayoutManager(activity)
@@ -185,12 +182,23 @@ class ActivityModule (private val activity: BaseActivity<*>){
     fun provideCheckouViewModel(
             schedulerProvider: SchedulerProvider,
             compositeDisposable: CompositeDisposable,
-            networkHelper: NetworkHelper
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
     ): CheckOutViewModel = ViewModelProviders.of(
             activity, ViewModelProviderFactory(CheckOutViewModel::class) {
-        CheckOutViewModel(compositeDisposable, schedulerProvider, networkHelper)
+        CheckOutViewModel(compositeDisposable, schedulerProvider, networkHelper, userRepository)
     }).get(CheckOutViewModel::class.java)
 
+    @Provides
+    fun providePaymentStatusViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+    ): PaymenStausViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(PaymenStausViewModel::class) {
+        PaymenStausViewModel(compositeDisposable, schedulerProvider, networkHelper, userRepository)
+    }).get(PaymenStausViewModel::class.java)
 
     @Provides
     fun provideAllSalonsViewModel(
@@ -253,6 +261,19 @@ class ActivityModule (private val activity: BaseActivity<*>){
             activity, ViewModelProviderFactory(UploadPictureViewModel::class) {
         UploadPictureViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository, profilePictureRepository, directory)
     }).get(UploadPictureViewModel::class.java)
+
+
+    @Provides
+    fun provideBookingViewModel(
+            schedulerProvider: SchedulerProvider,
+            compositeDisposable: CompositeDisposable,
+            networkHelper: NetworkHelper,
+            userRepository: UserRepository
+
+    ): MyBookingViewModel = ViewModelProviders.of(
+            activity, ViewModelProviderFactory(MyBookingViewModel::class) {
+        MyBookingViewModel(compositeDisposable, networkHelper, schedulerProvider, userRepository)
+    }).get(MyBookingViewModel::class.java)
 
 
 

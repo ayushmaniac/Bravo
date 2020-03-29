@@ -2,19 +2,13 @@ package com.realcrap.bravo.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.airbnb.lottie.LottieAnimationView
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ActivityComponent
 import com.realcrap.bravo.ui.base.BaseActivity
 import com.realcrap.bravo.ui.login.Login
 import com.realcrap.bravo.ui.main.MainActivity
 import com.realcrap.bravo.util.common.Event
-import com.realcrap.bravo.util.network.NetworkHelper
-import com.realcrap.bravo.util.rx.SchedulerProvider
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class Splash : BaseActivity<SplashViewModel>(){
@@ -31,7 +25,7 @@ class Splash : BaseActivity<SplashViewModel>(){
     }
 
     override fun setupView(savedInstanceState: Bundle?) {
-        lav_actionBar.playAnimation()
+        success.playAnimation()
     }
 
     override fun setupObservers() {

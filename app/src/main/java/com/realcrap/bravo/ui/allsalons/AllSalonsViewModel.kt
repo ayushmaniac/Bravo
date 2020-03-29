@@ -25,6 +25,8 @@ schedulerProvider,compositeDisposable,networkHelper
     val getTodaysDate = MutableLiveData<String>()
     val calender : Calendar = Calendar.getInstance()
     val currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calender.time)
+    val allProgress = MutableLiveData<Boolean>()
+
 
 
 
@@ -39,6 +41,7 @@ schedulerProvider,compositeDisposable,networkHelper
 
 
     fun getAllMerchants(city : String) {
+        allProgress.postValue(true)
         if (dataAllSalons.value == null && checkInternetConnectionWithMessage()) {
 
             compositeDisposable.add(
@@ -48,9 +51,13 @@ schedulerProvider,compositeDisposable,networkHelper
                                     {
                                         allSalonList.addAll(it)
                                         dataAllSalons.postValue(Resource.success(it))
+                                        allProgress.postValue(false)
+
                                     },
                                     {
                                         handleNetworkError(it)
+                                        allProgress.postValue(false)
+
 
                                     }
                             )

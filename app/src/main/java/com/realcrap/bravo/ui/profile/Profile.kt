@@ -2,22 +2,29 @@ package com.realcrap.bravo.ui.profile
 
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.transition.Transition
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.transition.DrawableCrossFadeTransition
+import com.bumptech.glide.request.transition.TransitionFactory
 import com.google.firebase.auth.FirebaseAuth
-
+import com.realcrap.bravo.BuildConfig
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.FragmentComponent
 import com.realcrap.bravo.ui.base.BaseFragment
+import com.realcrap.bravo.ui.contactus.ContactUs
 import com.realcrap.bravo.ui.editprofile.EditProfile
-import com.realcrap.bravo.ui.location.Location
 import com.realcrap.bravo.ui.login.Login
+import com.realcrap.bravo.ui.mybooking.MyBookings
+import com.realcrap.bravo.ui.notification.Notifications
 import kotlinx.android.synthetic.main.fragment_userprofile.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -58,6 +65,41 @@ class Profile : BaseFragment<ProfileViewModel>() {
             startActivity(Intent(context, EditProfile::class.java))
         }
 
+        proMyBooking.setOnClickListener {
+
+            startActivity(Intent(context, MyBookings::class.java))
+
+        }
+
+        profNotifications.setOnClickListener {
+
+            startActivity(Intent(context, Notifications::class.java))
+
+        }
+
+
+        profContactus.setOnClickListener {
+
+            startActivity(Intent(context, ContactUs::class.java))
+
+        }
+
+        profShare.setOnClickListener {
+
+            //            try {
+//                val shareIntent = Intent(Intent.ACTION_SEND)
+//                shareIntent.type = "text/plain"
+//                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "")
+//                var shareMessage = "\nLet me recommend you this application\n\n"
+//                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n"
+//                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+//                startActivity(Intent.createChooser(shareIntent, "choose one"))
+//            } catch (e: Exception) {
+//            }
+//        }
+
+        }
+
     }
 
     override fun setupObservers() {
@@ -82,12 +124,32 @@ class Profile : BaseFragment<ProfileViewModel>() {
             }
         })
 
-        viewModel.userNameData.observe(this, Observer {
 
-            usersName.text = it
+        viewModel.dataUser.observe(this, Observer {
+
+            usersName.text = it.data!!.name
+            Glide.with(context!!)
+                    .load(it.data.profilepic)
+                    .into(userProfilePic)
+
 
         })
+        }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.getUserDetails()
     }
 
 
+    inner class DrawableAlwaysCrossFadeFactory : TransitionFactory<Drawable> {
+        private val resourceTransition: DrawableCrossFadeTransition = DrawableCrossFadeTransition(300, true) //customize to your own needs or apply a builder pattern
+        override fun build(dataSource: DataSource?, isFirstResource: Boolean): com.bumptech.glide.request.transition.Transition<Drawable> {
+            return resourceTransition
+        }
+    }
+
 }
+
+

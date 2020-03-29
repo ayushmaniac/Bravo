@@ -9,6 +9,7 @@ import com.mindorks.paracamera.Camera
 import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.ActivityComponent
 import com.realcrap.bravo.ui.base.BaseActivity
+import com.realcrap.bravo.ui.editprofile.EditProfile
 import kotlinx.android.synthetic.main.activity_upload_picture.*
 import java.io.FileNotFoundException
 import javax.inject.Inject
@@ -80,7 +81,6 @@ class UploadPicture : BaseActivity<UploadPictureViewModel>() {
         viewModel.loading.observe(this, Observer {
 
             uploadProgressBar.visibility = if(it) View.VISIBLE else View.GONE
-            finish()
 
         })
     }

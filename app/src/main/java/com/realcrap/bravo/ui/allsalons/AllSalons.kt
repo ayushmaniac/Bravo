@@ -2,6 +2,7 @@ package com.realcrap.bravo.ui.allsalons
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.realcrap.bravo.R
@@ -47,6 +48,7 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
         }
 
 
+
     }
 
     private fun updateDate(yearO: Int, monthOfYear: Int, dayOfMonth: Int) {
@@ -70,6 +72,23 @@ class AllSalons : BaseActivity<AllSalonsViewModel>() {
 
            changeDate.text = it
        })
+
+        viewModel.allProgress.observe(this, Observer {
+
+            if(it == true){
+                wait.visibility = View.VISIBLE
+                wait.playAnimation()
+                waitText.visibility = View.VISIBLE
+
+            }
+            else {
+
+                wait.visibility = View.GONE
+                wait.cancelAnimation()
+                waitText.visibility = View.GONE
+
+            }
+        })
     }
 
 }

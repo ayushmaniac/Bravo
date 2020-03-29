@@ -3,10 +3,9 @@ package com.realcrap.bravo.data.repository
 import com.realcrap.bravo.data.local.prefs.UserPreferences
 import com.realcrap.bravo.data.model.User
 import com.realcrap.bravo.data.remote.NetworkService
-import com.realcrap.bravo.data.remote.response.LoginResponse
-import com.realcrap.bravo.data.remote.response.RegistrationResponse
+import com.realcrap.bravo.data.remote.response.*
+import com.realcrap.bravo.data.remote.response.list.OrderListResponse
 import com.realcrap.bravo.data.remote.response.servicelist.ServiceResponse
-import com.realcrap.bravo.data.remote.response.UserDetailsResponse
 import com.realcrap.bravo.ui.allsalons.salon.Salon
 import com.realcrap.bravo.ui.home.homesalons.HomeSalons
 import io.reactivex.Single
@@ -74,7 +73,7 @@ class UserRepository @Inject constructor(
                         )
             }
 
-    fun createAccount(name: String, mobile: String, email: String, password: String): Single<RegistrationResponse> =
+    fun createAccount(name: String, email: String,mobile: String, password: String): Single<RegistrationResponse> =
 
         networkService.doRegistration("registration", name, email, mobile, password).map {
 
@@ -95,7 +94,7 @@ class UserRepository @Inject constructor(
                     .map {it.data}
 
     fun getAllHomeMerchantList(city : String) : Single<List<HomeSalons>> =
-            networkService.getAllHomeMerchants(userPreferences.getAccessToken().toString(), "merchantlist", city)
+            networkService.getAllHomeMerchants(userPreferences.getAccessToken().toString(), "promotions", city)
                     .map { it.data}
 
 
@@ -116,6 +115,58 @@ class UserRepository @Inject constructor(
                         it.users
                     }
 
+
+    fun checkOutCash(merchantId: String, serviceId : String, orderDate : String, orderTime: String) : Single<GeneralResponse> =
+            networkService.doCashPayment(userPreferences.getAccessToken().toString(), "cash", merchantId, serviceId, orderDate, orderTime)
+                    .map {
+                        GeneralResponse(
+                                it.status,
+                                it.text
+                        )
+                    }
+
+
+    fun applyCoupon(merchantId : String, couponCode : String, amount : String) : Single<CouponResponse> =
+            networkService.applyCoupon(userPreferences.getAccessToken().toString(), "apply-coupon", merchantId, couponCode,amount)
+                    .map {
+                        CouponResponse(
+                                it.status,
+                                it.message,
+                                it.coupanamt,
+                                it.totalamt,
+                                it.savingamt
+                        )
+                    }
+
+
+    fun getOrderList() : Single<OrderListResponse> =
+            networkService.getOrderList(userPreferences.getAccessToken().toString(), "orderlist")
+                    .map {
+                        OrderListResponse(
+                                it.orders,
+                                it.status)
+                    }
+
+    fun removeCoupon(amount : String) : Single<CouponResponse> =
+            networkService.removeCoupon(userPreferences.getAccessToken().toString(), "cancel-coupon",amount)
+                    .map {
+                        CouponResponse(
+                                it.status,
+                                it.message,
+                                it.coupanamt,
+                                it.totalamt,
+                                it.savingamt
+                        )
+                    }
+
+    fun updateProfile(name : String, email : String, mobile : String) =
+            networkService.updateProfile(userPreferences.getAccessToken().toString(), "updation", name, email, mobile)
+                    .map {
+                        GeneralResponse(
+                                it.status,
+                                it.text
+                        )
+                    }
 
 
     }

@@ -12,7 +12,6 @@ import com.realcrap.bravo.ui.home.HomeViewModel
 import com.realcrap.bravo.ui.home.homeoffers.HomeOfferAdapter
 import com.realcrap.bravo.ui.home.homesalons.HomeSalonsAdapter
 import com.realcrap.bravo.ui.offers.OffersViewModel
-import com.realcrap.bravo.ui.offers.offersutil.OfferAdapter
 import com.realcrap.bravo.ui.profile.ProfileViewModel
 import com.realcrap.bravo.ui.referandearn.ReferViewModel
 import com.realcrap.bravo.util.ViewModelProviderFactory
@@ -33,8 +32,6 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     @Provides
     fun provideLinearLayoutManager(): LinearLayoutManager = LinearLayoutManager(fragment.context)
 
-    @Provides
-    fun provideOffersAdapter()=OfferAdapter(fragment.lifecycle, ArrayList())
 
     @Provides
     fun provideHomeOffersAdapter()= HomeOfferAdapter(fragment.lifecycle, ArrayList())

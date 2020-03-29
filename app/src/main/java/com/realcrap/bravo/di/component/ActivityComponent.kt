@@ -7,6 +7,7 @@ import com.realcrap.bravo.ui.allsalons.AllSalons
 import com.realcrap.bravo.ui.bookingdetails.BookingDetails
 import com.realcrap.bravo.ui.buisnesspage.Buisness
 import com.realcrap.bravo.ui.checkout.Checkout
+import com.realcrap.bravo.ui.checkout.paymentstatus.PaymentStatus
 import com.realcrap.bravo.ui.editprofile.EditProfile
 import com.realcrap.bravo.ui.forgotpassword.ForgotPassword
 import com.realcrap.bravo.ui.forgotpassword.changepassword.ChangePassword
@@ -15,6 +16,7 @@ import com.realcrap.bravo.ui.login.Login
 import com.realcrap.bravo.ui.loginemail.LoginEmail
 import com.realcrap.bravo.ui.loginemail.LoginEmailViewModel
 import com.realcrap.bravo.ui.main.MainActivity
+import com.realcrap.bravo.ui.mybooking.MyBookings
 import com.realcrap.bravo.ui.setuppassword.CreatePassword
 import com.realcrap.bravo.ui.signup.Registration
 import com.realcrap.bravo.ui.splash.Splash
@@ -58,6 +60,11 @@ interface ActivityComponent {
     fun inject(activity: EditProfile)
 
     fun inject(activity: UploadPicture)
+    fun inject(activity: PaymentStatus)
+
+    fun inject(activity: MyBookings)
+
+
 
 
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/thanksText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/failure"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="Something went wrong and we are sad about it."
+        android:textColor="#F44336" />
+
+
+    <TextView
+        android:id="@+id/soonText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thanksText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="May be you should give it another chance and let us see you having a hair cut soon."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/failure"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:scaleType="fitCenter"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="fail.json"
+        app:lottie_loop="true" />
+
+
+    <Button
+        android:id="@+id/proceedStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/soonText"
+        android:layout_centerHorizontal="true"
+        android:background="#8BC34A"
+        android:text="Try Again"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
+
+
+

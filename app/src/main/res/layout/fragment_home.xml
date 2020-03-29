@@ -34,7 +34,39 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="5dp"
             android:text="Pandri"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
+
+        <ImageView
+            android:layout_alignParentEnd="true"
+            android:layout_width="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_height="20dp"
+            android:src="@drawable/noti"
+            tools:targetApi="m"
+            android:focusable="true" />
+
+        <RelativeLayout
+            android:id="@+id/textCount"
+            android:layout_width="15dp"
+            android:visibility="gone"
+            android:background="@drawable/circlebg"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="8dp"
+                android:textColor="@android:color/white"
+                android:layout_centerInParent="true"
+                android:text="1"/>
+        </RelativeLayout>
+
+
     </RelativeLayout>
 
 

@@ -1,5 +1,6 @@
 package com.realcrap.bravo.ui.editprofile
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import com.realcrap.bravo.data.remote.response.UserDetailsResponse
 import com.realcrap.bravo.data.repository.UserRepository
@@ -16,6 +17,13 @@ class EditProfileViewModel (compositeDisposable: CompositeDisposable, networkHel
 
     val dataUser : MutableLiveData<Resource<UserDetailsResponse.Users>> = MutableLiveData()
     val dataProgress = MutableLiveData<Boolean>()
+    val nameField : MutableLiveData<String> = MutableLiveData()
+    val emailField : MutableLiveData<String> = MutableLiveData()
+    val mobileField : MutableLiveData<String> = MutableLiveData()
+    val updateStatus = MutableLiveData<String>()
+
+
+
 
 
 
@@ -23,6 +31,10 @@ class EditProfileViewModel (compositeDisposable: CompositeDisposable, networkHel
 
         getUserDetails()
     }
+
+    fun onEmailChanged(email : String) = emailField.postValue(email)
+    fun onNameChanged(name : String) = nameField.postValue(name)
+    fun onMobileChanged(mobile : String) = mobileField.postValue(mobile)
 
     private fun getUserDetails() {
             dataProgress.postValue(true)
@@ -46,6 +58,31 @@ class EditProfileViewModel (compositeDisposable: CompositeDisposable, networkHel
                                     }
                             )
             )
+    }
+
+
+    fun updateProfileDetails(){
+        if(checkInternetConnection()){
+            dataProgress.postValue(true)
+            compositeDisposable.add(
+            userRepository.updateProfile(nameField.value.toString(), emailField.value.toString(), mobileField.value.toString())
+                    .subscribeOn(schedulerProvider.io())
+                    .subscribe(
+                            {
+                                dataProgress.postValue(false)
+                                updateStatus.postValue(it.text)
+
+
+                            },
+                            {
+                                handleNetworkError(it)
+                                dataProgress.postValue(false)
+
+                            }
+                    )
+
+            )}
+
     }
 
     override fun onCleared() {

@@ -13,7 +13,7 @@ import com.realcrap.bravo.R
 import com.realcrap.bravo.di.component.FragmentComponent
 import com.realcrap.bravo.ui.base.BaseFragment
 import com.realcrap.bravo.ui.home.HomeViewModel
-import com.realcrap.bravo.ui.offers.offersutil.OfferAdapter
+import com.realcrap.bravo.util.display.Toaster
 import dagger.multibindings.IntKey
 import kotlinx.android.synthetic.main.fragment_offers.*
 import javax.inject.Inject
@@ -21,7 +21,9 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class Offers :  BaseFragment<OffersViewModel>() {
+class Offers :  BaseFragment<OffersViewModel>(), OffersClickListener {
+
+    var offerlist : List<OfferModel>? = null
 
     companion object {
 
@@ -39,8 +41,7 @@ class Offers :  BaseFragment<OffersViewModel>() {
     @Inject
     lateinit var linearLayoutManager: LinearLayoutManager
 
-    @Inject
-    lateinit var offerAdapter: OfferAdapter
+
 
     override fun provideLayoutId(): Int = R.layout.fragment_offers
 
@@ -50,19 +51,28 @@ class Offers :  BaseFragment<OffersViewModel>() {
     override fun setupView(view: View) {
 
         offersRecyclerView.apply {
-            adapter = offerAdapter
             layoutManager = linearLayoutManager
+            adapter = offerlist?.let { OffersAdapter(it, this@Offers) }
         }
 
     }
 
     override fun setupObservers() {
         super.setupObservers()
-        viewModel.offersData.observe(this, Observer {
 
-            offerAdapter.appendData(it)
+    }
 
-        })
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        offerlist = listOf(
+                OfferModel("1", "2"),
+                OfferModel("2", "@")
+        )
+    }
+
+    override fun onImageClicked(view: View, offerModel: OfferModel) {
+        Toaster.show(requireContext(), offerModel.name)
     }
 
 

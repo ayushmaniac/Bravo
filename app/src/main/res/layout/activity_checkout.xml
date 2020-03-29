@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ui.checkout.Checkout">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,18 +34,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
+        android:id="@+id/serviceOptedText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="269dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="13dp"
         android:fontFamily="@font/poppins"
         android:text="Service Opted"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/serviceItemsRecycler"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -51,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintTop_toBottomOf="@+id/serviceOptedText" />
 
 
     <androidx.cardview.widget.CardView
@@ -71,17 +80,6 @@
             android:background="#22A7A5A5">
 
             <TextView
-                android:id="@+id/serviceTotalAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/poppins"
-                android:text="100INR" />
-
-
-            <TextView
                 android:id="@+id/sericeTotalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,51 +88,40 @@
                 android:fontFamily="@font/poppins"
                 android:text="Service Total" />
 
-            <TextView
-                android:id="@+id/couponDiscountText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Coupon Discount"
-                android:fontFamily="@font/poppins"
-                android:layout_below="@id/sericeTotalText"
-                android:layout_marginLeft="16dp"/>
 
             <TextView
-                android:id="@+id/couponAmount"
+                android:id="@+id/serviceTotalAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/serviceTotalAmount"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/poppins"
-                android:text="100INR" />
+                android:fontFamily="@font/poppins" />
 
+
+            <TextView
+                android:layout_below="@id/sericeTotalText"
+                android:id="@+id/haveApromoCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="Have a promo code?"/>
 
 
             <RelativeLayout
-                android:id="@+id/newLayout"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/haveApromoCode"
+                android:id="@+id/showCouponLayout"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/couponAmount">
-
-                <TextView
-                    android:id="@+id/haveApromoCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Have a promo code?"/>
-
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:hint="Coupon"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@id/haveApromoCode"
                     android:layout_marginLeft="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -147,9 +134,9 @@
 
 
                 <Button
+                    android:id="@+id/applyCouponButton"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
-                    android:layout_below="@id/haveApromoCode"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="19dp"
                     android:layout_marginEnd="15dp"
@@ -157,7 +144,32 @@
                     android:background="@drawable/button_bg_round"
                     android:text="Apply" />
 
+
+
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/couponDiscountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Coupon Discount"
+                android:fontFamily="@font/poppins"
+                android:visibility="visible"
+                android:layout_below="@id/showCouponLayout"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:id="@+id/couponAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/showCouponLayout"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/poppins"
+                />
 
 
             <TextView
@@ -167,7 +179,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="17sp"
                 android:layout_marginLeft="16dp"
-                android:layout_below="@id/newLayout"
+                android:layout_below="@id/couponDiscountText"
                 android:fontFamily="@font/poppins"/>
 
 
@@ -179,40 +191,85 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
-                android:layout_below="@id/newLayout"
+                android:layout_below="@id/couponAmount"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/poppins"
-                android:text="100INR" />
+                android:fontFamily="@font/poppins"/>
+
+            <ProgressBar
+                android:id="@+id/couponProgress"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="26dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/serviceTotalAmount"/>
+
 
         </RelativeLayout>
 
-
     </androidx.cardview.widget.CardView>
 
-
     <RelativeLayout
+        android:id="@+id/payOnline"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#A683E6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins"
+            android:text="Pay Online"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/payCash"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#5AE0F1"
+        app:layout_constraintBottom_toTopOf="@+id/payOnline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#8BC34A"
         app:layout_constraintTop_toBottomOf="@+id/cardView2"
         app:layout_constraintVertical_bias="1.0">
 
 
         <TextView
             android:layout_width="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
-            android:text="Proceed"/>
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins"
+            android:text="Pay at Salon"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
 
+    <ProgressBar
+        android:id="@+id/checkOutProgress"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/payCash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.core.widget.NestedScrollView>

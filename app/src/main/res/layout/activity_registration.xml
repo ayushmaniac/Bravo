@@ -14,7 +14,7 @@
         android:fontFamily="@font/poppins"
         android:padding="10dp"
         android:text="Let's start by knowing you a little"
-        android:textColor="@color/colorAccent"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -25,12 +25,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="@android:color/white"
         android:hint="Name"
         android:padding="5dp"
 
-        android:textColorHint="@color/colorAccent"
-        app:boxStrokeColor="@color/colorAccent"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -39,9 +39,9 @@
             android:id="@+id/nameEdText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent" />
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,11 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="@android:color/white"
         android:hint="Email"
         android:padding="5dp"
-        android:textColorHint="@color/colorAccent"
-        app:boxStrokeColor="@color/colorAccent"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/nameLayout"
         app:layout_constraintStart_toStartOf="@+id/nameLayout"
         app:layout_constraintTop_toBottomOf="@+id/nameLayout">
@@ -63,9 +63,9 @@
             android:id="@+id/emailEdText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent" />
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -74,11 +74,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="@android:color/white"
         android:hint="Mobile"
         android:padding="5dp"
-        android:textColorHint="@color/colorAccent"
-        app:boxStrokeColor="@color/colorAccent"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/emailLayoutHere"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailLayoutHere"
@@ -88,9 +88,9 @@
             android:id="@+id/mobileEdText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent" />
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -102,7 +102,7 @@
         android:fontFamily="@font/poppins"
         android:padding="10dp"
         android:text="Create an account"
-        android:textColor="@color/colorAccent"
+        android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,16 +124,49 @@
         app:layout_constraintTop_toBottomOf="@+id/mobileLayout"
         app:layout_constraintVertical_bias="0.785" />
 
+
+    <EditText
+        android:id="@+id/referralCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/edittext_bg"
+        android:fontFamily="@font/poppins"
+        android:padding="10dp"
+        android:textColor="#706F6F"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ProgressBar
         android:id="@+id/regProgress"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mobileLayout"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.61" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="236dp"
+        android:fontFamily="@font/poppins"
+        android:text="Have a referral code?"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobileLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

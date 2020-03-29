@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.uploadpic.UploadPicture"></activity>
+        <activity android:name=".ui.checkout.paymentstatus.PaymentStatusFailure"></activity>
+        <activity android:name=".ui.checkout.paymentstatus.PaymentStatus" />
+        <activity android:name=".ui.uploadpic.UploadPicture" />
         <activity android:name=".ui.forgotpassword.changepassword.ChangePassword" />
         <activity android:name=".ui.editprofile.EditProfile" />
         <activity android:name=".ui.checkout.Checkout" />
